@@ -1,0 +1,56 @@
+# scripts/02_metricas_falhas.R ----------------------------------
+
+banco <- carregar_banco(lote_id)
+banco <- add_linha_coluna(banco)
+
+# Limites a calcular (pode alterar sem mexer no código)
+limites <- c(15, 30, 60)
+
+# Função para calcular falhas
+calcular_falhas <- function(df, limite_min) {
+  df %>%
+    arrange(Sensor, data_hora) %>%
+    group_by(Sensor) %>%
+    mutate(
+      dif_min   = as.numeric(difftime(data_hora, lag(data_hora), units = "mins")),
+      tem_falha = if_else(!is.na(dif_min) & dif_min > limite_min, 1L, 0L)
+    ) %>%
+    ungroup()
+}
+
+# Pasta de saída
+pasta_tab <- dir_resultados_lote(lote_id, "tabelas")
+
+# Lista para retorno
+resultados <- list()
+
+for (lim in limites) {
+  
+  # calcular
+  falhas_df <- calcular_falhas(banco, lim)
+  
+  # agregar
+  falhas_por_sensor <- falhas_df %>%
+    group_by(Sensor, Linha, Coluna) %>%   # agora já inclui linha/coluna
+    summarise(total_falhas = sum(tem_falha), .groups = "drop")
+  
+  # salvar CSV
+  write_csv(
+    falhas_por_sensor,
+    file.path(pasta_tab, glue("falhas_por_sensor_{lim}min.csv"))
+  )
+  
+  # salvar RDS opcional – útil para gráficos posteriores
+  write_rds(
+    falhas_df,
+    file.path(pasta_tab, glue("falhas_brutas_{lim}min.rds"))
+  )
+  
+  # armazenar em lista de retorno
+  resultados[[paste0("limite_", lim)]] <- falhas_por_sensor
+}
+
+message("✅ Métricas de falha calculadas para limites: ",
+        paste(limites, collapse = ", "),
+        " minutos.")
+

@@ -1,0 +1,26 @@
+{
+    "id": "495868CD",
+    "path": "~/BroindexAnalise/scripts/05_paineis_periodos.R",
+    "project_path": "scripts/05_paineis_periodos.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1766171267865.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "18,0",
+        "scrollLine": "27"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1766170136,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1766170136,
+    "read_only": false,
+    "read_only_alternatives": []
+}
