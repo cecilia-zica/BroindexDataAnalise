@@ -1,21 +1,11 @@
-# scripts/99_run_lote.R ----------------------------------------
+# scripts/99_run_lote.R
+source("scripts/00_config.R")  # se você quiser centralizar libs/paths aqui
 
-# 1) Defina apenas UMA VEZ o lote aqui:
-lote_id <- "lote1"   # <- sem zero à esquerda porque seu arquivo é "_lote1.xlsx"
+lote_id <- "lote01"
+limites_falha <- c(15, 30)
 
-# 2) carregue configurações globais
-source("scripts/00_config.R")
+# 01 é leitura/tratamento (se você quiser rodar)
+# source("scripts/01_leitura_tratamento.R")
 
-# 3) carregue o script que DEFINE a função ler_e_tratar_lote()
-source("scripts/01_leitura_tratamento.R")
-
-# 4) execute a função para gerar banco_periodos.rds
-banco <- ler_e_tratar_lote(lote_id)
-
-# 5) agora rode as próximas etapas do pipeline:
-source("scripts/02_metricas_falhas.R")
-source("scripts/03_graficos_temperatura.R")
-source("scripts/04_graficos_falhas_pareto.R")
-source("scripts/05_paineis_periodos.R")
-
-message("✅ Pipeline completo executado para o lote: ", lote_id)
+# 02 é tudo em 1 (menos leitura)
+source("scripts/02_analise_graficos_unico.R")
