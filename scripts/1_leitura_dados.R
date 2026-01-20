@@ -4,19 +4,14 @@
 # ============================================================
 
 # -------------------------------
-# 0) CONFIG (você só mexe aqui)
+# 0) CONFIGURACOES
 # -------------------------------
 pasta_base <- "C:/Users/LENOVO/Documents/BroindexAnalise"
-lote_id    <- "lote01"
-
-# Se quiser forçar o nome do arquivo, coloque aqui:
-# Ex.: "dados_PRJT_UFSC_lote1.xlsx"
-# Se deixar NULL, ele tenta montar automaticamente:
-# "dados_PRJT_UFSC_{lote_id}.xlsx"
+lote_id    <- "lote2"
 arquivo_xlsx <- "dados_PRJT_UFSC_lote1.xlsx"
 
 # -------------------------------
-# 1) PACOTES
+# 1) pacotes
 # -------------------------------
 library(tidyverse)
 library(lubridate)
@@ -26,7 +21,7 @@ library(furrr)
 library(glue)
 
 # -------------------------------
-# 2) CAMINHOS
+# 2) caminhos
 # -------------------------------
 pasta_brutos   <- file.path(pasta_base, "data", "brutos")
 pasta_tratados <- file.path(pasta_base, "data", "tratados")
@@ -38,7 +33,7 @@ dir_tratado_lote <- function(lote_id) {
 }
 
 # -------------------------------
-# 3) TABELA GLOBAL DE PERÍODOS (mesma do projeto)
+# 3) tabela global de periodos POR LOTE
 # -------------------------------
 periodos <- tibble(
   Periodo = c("Alojamento","Abertura1","Abertura2","Abertura3","Abertura4","Abertura5"),
@@ -79,7 +74,7 @@ ler_e_tratar_lote <- function(lote_id, arquivo_xlsx = NULL) {
             UR = as.numeric(gsub(",", ".", UR)),
             
             # Data e Hora
-            Data = as.Date(Data, format = "%m/%d/%Y"),
+            Data = as.Date(Data, format = "%d/%m/%Y"),
             Hora = format(as.POSIXct(Hora, format = "%H:%M:%S"), "%H:%M:%S"),
             
             # junta
