@@ -1,0 +1,145 @@
+RESUMO DAS MUDANÇAS — SESSÃO 2026-03-23
+========================================
+
+ARQUIVOS MODIFICADOS
+--------------------
+- scripts/config.R
+- scripts/1_leitura.R
+- scripts/2_analise.R
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MUDANÇA 1 — Filtro do período de análise
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARQUIVO: scripts/config.R
+FUNÇÃO CRIADA: filtrar_periodo_analise(banco, periodos)
+
+O QUE FAZ:
+  Recebe o banco de dados e a tabela de períodos do lote.
+  Remove todas as leituras cuja data_hora está fora da janela definida
+  para o lote — ou seja, antes do início do primeiro período
+  (ex: VazioSanitario_Ini) ou depois do fim do último período
+  (ex: VazioSanitario_Fim).
+  Emite uma mensagem informando quantas linhas foram removidas e qual
+  foi a janela usada (data início → data fim).
+
+POR QUE FOI FEITA:
+  Os arquivos XLSX podem conter leituras fora do ciclo do lote
+  (testes de equipamento, datas erradas, etc.).
+  Filtrar logo no início garante que toda análise posterior trabalha
+  apenas com dados do período relevante.
+
+ONDE É CHAMADA:
+  Em scripts/2_analise.R, logo após carregar o banco (ver Mudança 3).
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MUDANÇA 2 — Classificação de Periodo movida para análise
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARQUIVOS: scripts/config.R  |  scripts/1_leitura.R  |  scripts/2_analise.R
+FUNÇÃO CRIADA: classificar_periodos(banco, periodos)
+
+O QUE MUDOU:
+  Antes: a coluna "Periodo" era criada dentro de 1_leitura.R e ficava
+         gravada no RDS (arquivo intermediário em data/tratados/).
+
+  Depois: 1_leitura.R salva o RDS SEM a coluna Periodo.
+          A classificação acontece em 2_analise.R, logo após carregar
+          os dados.
+
+O QUE FAZ classificar_periodos():
+  Para cada linha do banco, verifica em qual período operacional
+  (Alojamento, Abertura1, Abertura2 … VazioSanitario_Fim) a leitura
+  se encaixa com base no data_hora. Cria a coluna "Periodo" como
+  factor ordenado. Leituras fora de qualquer período ficam como NA.
+
+POR QUE FOI FEITA:
+  Separar leitura de classificação torna o pipeline mais claro:
+    - 1_leitura.R = lê, limpa e filtra por data → salva RDS bruto
+    - 2_analise.R = carrega, filtra, classifica e analisa
+  Assim, se os períodos mudarem, basta rodar 2_analise.R — não é
+  necessário reler o XLSX inteiro.
+
+ORDEM DE CHAMADA EM 2_analise.R:
+  carregar_banco()
+    → filtrar_periodo_analise()   ← corta datas fora do lote
+    → classificar_periodos()      ← cria coluna Periodo
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MUDANÇA 3 — Faixas de umidade ideal corrigidas
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARQUIVO: scripts/2_analise.R
+OBJETO ALTERADO: faixas_ideais_ur (tibble com URmin e URmax por período)
+
+VALORES ANTERIORES (INCORRETOS) → VALORES CORRIGIDOS:
+
+  Alojamento    40–45%  →  60–70%
+  Abertura1     40–45%  →  60–70%
+  Abertura2     40–45%  →  60–70%
+  Abertura3     50–70%  →  60–70%
+  Abertura4     50–70%  →  50–60%
+  Abertura5_8d  50–70%  →  50–60%
+  Abertura5_15d 50–70%  →  50–60%
+
+FONTE: Tabela de parâmetros de manejo do projeto (helper-text).
+
+IMPACTO:
+  As faixas verdes (zonas ideais) nos gráficos de painel por período
+  de umidade relativa agora refletem os valores reais de manejo.
+  As faixas de temperatura (faixas_ideais_t) já estavam corretas
+  e não foram alteradas.
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+MUDANÇA 4 — Critério de falha redefinido com base biológica
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+ARQUIVO: scripts/2_analise.R
+FUNÇÕES/OBJETOS ALTERADOS: calcular_falhas(), n_intervalos_falha
+
+PROBLEMA ANTERIOR:
+  calcular_falhas() usava um limite fixo em minutos (10, 15, 30, 60)
+  igual para todos os sensores. Isso era biologicamente incorreto:
+    - Gap de 10 min num sensor de 5 min  = 2 leituras perdidas → falha real
+    - Gap de 10 min num sensor de 10 min = 1 leitura perdida   → funcionamento normal
+  Resultado: sensores de 10 min eram marcados como "em falha" o tempo todo.
+
+CRITÉRIO BIOLÓGICO ADOTADO (baseado na tabela de manejo):
+  Uma falha real ocorre quando 2 ou mais leituras consecutivas são perdidas.
+  Isso porque:
+    - 1 leitura perdida pode ser atraso ou ruído do sensor → tolerável.
+    - 2+ leituras perdidas = período sem monitoramento real → falha.
+    - Nos primeiros períodos (Alojamento–Abertura2, dias 1–7) a faixa
+      térmica ideal é 32–35 °C e os pintos não termorregulam, tornando
+      qualquer gap > 2 leituras potencialmente crítico para o lote.
+
+O QUE MUDOU NA FUNÇÃO:
+  Antes: calcular_falhas(df, limite_min)
+         → limite em minutos fixo, igual para todos os sensores
+
+  Depois: calcular_falhas(df, sensor_config, n_intervalos = 2)
+          → limite = n_intervalos × intervalo_min do sensor
+          → sensor 5 min: falha se gap > 10 min
+          → sensor 10 min: falha se gap > 20 min
+
+NOVO PARÂMETRO DE CONFIGURAÇÃO (topo de 2_analise.R):
+  n_intervalos_falha <- 2L   # editar aqui para mudar o critério
+
+SAÍDAS GERADAS:
+  resultados/<lote>/falhas/tabelas/falhas_por_sensor_bio.csv
+  resultados/<lote>/falhas/tabelas/falhas_brutas_bio.rds
+  (coluna "limite_bio_min" indica o limiar usado por sensor)
+
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PENDÊNCIAS — O QUE FICOU PARA DEPOIS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+[TAREFA 5] N de mortes e exclusões nos gráficos diários
+  Adicionar anotação por dia (n mortes / n exclusões) nos painéis de
+  temperatura e umidade por período. Aguardando importação dos dados
+  de mortalidade.

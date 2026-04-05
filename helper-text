@@ -1,0 +1,70 @@
+Com certeza! Fiz a transcrição completa e organizada das informações contidas na imagem, separando o cronograma de datas, a tabela de parâmetros técnicos e a legenda do diagrama.
+
+Aqui está tudo "mastigado" para você:
+
+---
+
+## 1. Cronogramas de Lotes (Datas)
+
+Os períodos estão divididos em três ciclos principais de 2025/2026:
+
+### **Lote 1 (Julho/Setembro)**
+* **VS Inicial:** 23/07/25 | **VS Final:** 04/09/25
+* **Alojamento (3 dias):** 24/07/25 a 26/07/25
+* **Abertura 1 (2 dias):** 27/07/25 a 28/07/25
+* **Abertura 2 (2 dias):** 29/07/25 a 30/07/25
+* **Abertura 3 (5 dias):** 31/07/25 a 04/08/25
+* **Abertura 4 (7 dias):** 05/08/25 a 11/08/25
+* **Abertura 5.1 (8 dias):** 12/08/25 a 19/08/25
+* **Abertura 5.2 (15 dias):** 20/08/25 a 03/09/25
+
+### **Lote 2 (Setembro/Novembro)**
+* **VS Inicial:** 23/09/25 | **VS Final:** 05/11/25
+* *Obs: Não tem nos dias 23, 24, 25/09 e 05/11*
+* **Alojamento (3 dias):** 24/09/25 a 26/09/25
+* **Abertura 1 (2 dias):** 27/09/25 a 28/09/25
+* **Abertura 2 (2 dias):** 29/09/25 a 30/09/25
+* **Abertura 3 (5 dias):** 01/10/25 a 05/10/25
+* **Abertura 4 (7 dias):** 06/10/25 a 12/10/25
+* **Abertura 5.1 (8 dias):** 13/10/25 a 20/10/25
+* **Abertura 5.2 (15 dias):** 21/10/25 a 04/11/25
+
+### **Lote 3 (Novembro/Janeiro)**
+* **VS Inicial:** 22/11/25 | **VS Final:** 04/01/26
+* *Obs: Não tem nos dias 22/11 e 04/01*
+* **Alojamento (3 dias):** 23/11/25 a 25/11/25
+* **Abertura 1 (2 dias):** 26/11/25 a 27/11/25
+* **Abertura 2 (2 dias):** 28/11/25 a 29/11/25
+* **Abertura 3 (5 dias):** 30/11/25 a 04/12/25
+* **Abertura 4 (7 dias):** 05/12/25 a 11/12/25
+* **Abertura 5.1 (8 dias):** 12/12/25 a 19/12/25
+* **Abertura 5.2 (15 dias):** 20/12/25 a 03/01/26
+
+---
+
+## 2. Parâmetros de Manejo (Tabela)
+
+| Período | n. dias | n. dias acum. | Temperatura (°C) | Umidade (UR) |
+| :--- | :---: | :---: | :---: | :---: |
+| **Alojamento** | 3 | 3 | 32 a 35 | 60 a 70% |
+| **Abertura 1** | 2 | 5 | 32 a 35 | 60 a 70% |
+| **Abertura 2** | 2 | 7 | 32 a 35 | 60 a 70% |
+| **Abertura 3** | 5 | 12 | 29 a 32 | 60 a 70% |
+| **Abertura 4** | 7 | 19 | 26 a 29 | 50 a 60% |
+| **Abertura 5.1**| 8 | 27 | 23 a 26 | 50 a 60% |
+| **Abertura 5.2**| 15 | 42 | 20 a 23 | 50 a 60% |
+
+---
+
+## 3. Diagrama de Divisão do Galpão (Sensores e Áreas)
+
+O diagrama mostra a progressão das áreas de abertura do galpão, indo das **Placas Evaporativas** em direção aos **Exaustores**:
+
+* **A5 (Alojamento/Cinza):** Sensores S7 a S15 (Colunas C3 a C5).
+* **A1 (Verde):** Sensores S16 a S18 (Coluna C6).
+* **A2 (Amarelo):** Sensores S19 a S21 (Coluna C7).
+* **A3 (Vermelho):** Sensores S22 a S24 (Coluna C8).
+* **A4 (Final):** Área dos sensores S25 a S30 (Colunas C9 e C10) próxima aos exaustores (E).
+
+---
+Deseja que eu calcule alguma data específica fora desse cronograma ou ajude a montar uma planilha com esses dados?
