@@ -113,3 +113,8 @@ ler_e_tratar_lote <- function(pasta_base, lote_id, arquivo_xlsx = NULL, tz = tz_
   message("✅ ", nrow(banco), " linhas salvas em: ", saida_rds)
   invisible(banco)
 }
+
+# - - - Execucao - - -
+# lote_id e pasta_base vêm de config.R (mude lá, não aqui)
+if (!exists("pasta_base")) pasta_base <- normalizePath(getwd(), winslash = "/")
+ler_e_tratar_lote(pasta_base, lote_id)

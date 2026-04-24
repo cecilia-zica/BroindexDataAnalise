@@ -1,11 +1,5 @@
 # ============================================================
 # scripts/config.R — Configuração central do projeto
-#
-# Toda informação que pode precisar ser editada está aqui:
-#   - Fuso horário
-#   - Datas de início/fim de cada período por lote
-#   - Layout do galpão e intervalo de medição por sensor
-#
 # Chamado por: 1_leitura.R, 2_analise.R, 3_comparativo.R
 # ============================================================
 
@@ -15,8 +9,9 @@ suppressPackageStartupMessages({
   library(lubridate)
 })
 
-# ── Fuso horário ─────────────────────────────────────────────
-tz_local <- "America/Sao_Paulo"
+# - - - Mude Aqui - - -
+lote_id   <- "lote1"   # "lote1" | "lote2" | "lote3"
+tz_local  <- "America/Sao_Paulo"
 
 # ── Períodos operacionais por lote ───────────────────────────
 # Cada linha define um período: nome, data início e data fim.

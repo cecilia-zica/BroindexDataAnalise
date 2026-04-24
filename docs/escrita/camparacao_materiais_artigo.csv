@@ -1,0 +1,47 @@
+Informações;Asia (vegetal);Asia (frango);Large Sports Space (Ginásio)
+período (data): inicio do experimento;fev/17;set/02;1º de Janeiro de 2013
+período (data): fim do experimento;jul/17;out/02;31 de Janeiro de 2013
+duração do experimento (em dias);Aproximadamente 60 dias (30 por estação) (análise sazonal: inverno e verão);O estudo utilizou dados de dois meses (setembro e outubro) para a análise. O período de crescimento das aves é de 4 a 5 semanas;31 dias
+descrição de cada fase/dia;No inverno, a temperatura foi mantida entre 8 e 20°C para a fase floral. No verão, a estufa foi continuamente ventilada para minimizar o estresse térmico;O período de crescimento dos frangos de corte é de 4 a 5 semanas. A temperatura recomendada geralmente diminui à medida que os frangos crescem.;"Foi encontrada uma diferença de 4 °C entre as sub-zonas 1 e 5 durante o período de funcionamento do HVAC (variação horizontal).
+"
+estação em que o experimento foi realizado;Inverno e Verão.;Outono (Setembro e Outubro);Inverno (Janeiro)
+altitude do galpão;Jugyo-myeon, Boryeong, Coreia do Sul (36°23’N, 126°29’E);;
+temperatura max (dia: de q hora até q horas?) dentro do experimento; 41.6 °C (verão, Julho de 2017);;
+temperatura max (noite: de q hora até q horas?) dentro do experimento;média da temperatura noturna (18:00–6:00) em Fevereiro variou entre 11.6 °C (P-5, P-6) e 12.3 °C (P-8), dependendo do sensor [141, T9].;;
+temperatura min (dia) dentro do experimento;22.8 °C (VERAO)  Inverno (Fevereiro), a temperatura diurna mínima média (6:00–18:00) foi de 11.3 °C (P-6) [140, T9];;
+temperatura min (noite) dentro do experimento;4.0 °C;;
+temperatura máxima dia; ;;O HVAC começou a funcionar às 08:00 e as temperaturas aumentaram até atingir o máximo após as 12:00 (29.1 °C)
+temperatura máxima noite;Em Fevereiro, durante a noite (18:00–6:00), a média variou entre 11.6 °C e 12.3 °C [141, T9].;;
+temperatura min dia;Julho: 22.8 °C (mínima registrada). Fevereiro: Mínima diurna (6:00–18:00) média de 11.3 °C (P-6) [140, T9].;;
+temperatura min noite;Fevereiro: Mínima noturna (18:00–6:00) média de 11.6 °C (P-5, P-6) [141, T9]. A mínima absoluta registrada em Fevereiro foi 4.0 °C.;;
+umidade max dentro do experimento;A umidade relativa é um fator importante, mas os valores máximos não são fornecidos;Mencionado como um fator ambiental, mas os valores não são fornecidos;
+umidade min dentro do experimento;;;
+umidade max do local;;;
+umidade min do local;;;
+Tipo de ventilação (manual ou automática)? N. de aparelhos e sua localização no galpão;Principalmente Natural, com aberturas laterais e no telhado. Aquecimento/Resfriamento por três bombas de calor;Ambos: Analisados aviários Ventilados Mecanicamente (ventilação por túnel, 60 aberturas de fenda, painel evaporativo) e Naturalmente (2 aberturas de cortina de guincho de 1.7 m × 65 m);Automática (HVAC)
+espaçamento do tempo (sensor mede de quanto em quanto tempo);intervals of 10 min;;
+galpão: altura (pé direito);Beiral: 4,5 Cumeeira: 5,7;mecanico: 4.5m (2.4 parede) natural: 4.2m (2.3m parede);10–15 m (piscina coberta)
+galpão: largura; 34.4 m;mecanico: 12m natural:12m;
+galpão: comprimento;24m espaco de cultivo/ 30.0 m;mecanico: 100m natural:70m;
+material usado no galpão (paredes e teto);0.15-mm-thick polyolefin film.;;
+superfície do galpão;768 m² (32 m x 24 m);;
+n de sensores usados;9 sensores de temperatura do ar (SHT 71);;
+espaçamento dos sensores;;mecanico: Dispostos em 3 fileiras x 5 colunas  (20m de distancia em eixo y e em x varia de 2-4-4-2m) - ver imagem -> + visual;
+altura dos sensores em relação ao indivíduo (animal ou vegetal);of 0.9 m above the floor.;0.4 m de altura a partir do solo (altura das aves);
+tipo de ventilação (natural ou automática);Ventilação natural controlada.;;
+distância e posicionamento das aberturas de ar;;Mecânico: 60 aberturas de fenda e painel evaporativo nas laterais. Natural: 2 aberturas de cortina de guincho (1.7 m × 65 m) nas laterais;
+separação das fases de criação (por cortinas até o teto?);Cortinas térmicas instaladas nas laterais e horizontalmente na altura do beiral para economia de energia no inverno. O espaço interno dividido em área de trabalho e área de cultivo;;
+Densidade: n de indivíduos (animal ou vegetal) por m2;100 plantas de manga Irwin em vasos em uma área de 768 m²;15 aves/m²;
+Tipo de cultura/espécie (animal ou vegetal); Irwin mango;Frangos de corte;
+Temperatura adotada para o manejo dos animais (ou planta) pelo produtor;Verão: 22–30 °C (faixa ideal). Inverno: 8–20 °C (estágio floral);;
+Umidade adotada para o manejo dos animais (ou planta) pelo produtor;Não especificada, embora dito que o controle de umidade seja importante no inverno;;
+CO2 adotado para o manejo dos animais (ou planta) pelo produtor;Não especificado, embora dito que  o controle de CO2 seja importante no inverno;;
+Outras variáveis medidas?;"portable weather station was installed outside the greenhouse for
+ monitoring the outside environment, including the wind di
+rection, windspeed,relativehumidity, andairtemperature,at
+ intervals of 10 min";O documento menciona que microclimas como umidade, poeira, etc., estão relacionados ao crescimento, mas apenas dados de temperatura foram usados na análise;
+localizacao;Jugyo-myeon, Boryeong, Coreia do Sul;Ik-san City, Coreia do Sul;Centro Esportivo Fidia, Cesano (Roma, Itália
+temp max externa;33.3 °C ;;
+temp min externa;-4.9 °C;;
+;;;
+Objetivo;Utilizou métodos baseados em Erro e Entropia para selecionar localizações que representassem o ambiente geral e detectassem áreas de alta variação;Utilizou métodos baseados em Erro e Entropia para selecionar localizações que representassem o ambiente geral e detectassem situações anormais;O SOU (Sensor Optimization Unit) utiliza um índice de desempenho de medição para otimizar a colocação de sensores e reduzir a incerteza de medição

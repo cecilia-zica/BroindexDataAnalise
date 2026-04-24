@@ -20,7 +20,6 @@
 
 # ── CONFIGURAÇÕES (edite aqui se necessário) ──────────────────
 if (!exists("pasta_base")) pasta_base <- normalizePath(getwd(), winslash = "/")
-if (!exists("lote_id"))    lote_id    <- "lote1"
 
 gerar_temperatura <- TRUE
 gerar_umidade     <- TRUE
