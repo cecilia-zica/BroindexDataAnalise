@@ -77,13 +77,11 @@ calcular_scores_diarios = function(df) {
   # agrega por dia/sensor/lote
   aggregate(
     cbind(
-      temp_d        =  df$ct == 0L,
-      temp_f_acima  =  df$ct == 1L,
-      temp_f_abaixo =  df$ct == -1L,
-      umid_d        =  df$cu == 0L,
-      umid_f_acima  =  df$cu == 1L,
-      umid_f_abaixo =  df$cu == -1L,
-      n_medidas     =  !is.na(df$ct)
+      temp_d    =  df$ct == 0L,
+      temp_f    =  df$ct != 0L,
+      umid_d    =  df$cu == 0L,
+      umid_f    =  df$cu != 0L,
+      n_medidas =  !is.na(df$ct)
     ) * 1L,
     by = list(dia = df$dia, sensor = df$sensor, lote = df$lote),
     FUN = sum,

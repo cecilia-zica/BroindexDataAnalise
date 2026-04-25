@@ -35,10 +35,7 @@ scores = calcular_scores_diarios(banco)
 dir_saida = "resultados/lote1"
 dir.create(dir_saida, recursive = TRUE, showWarnings = FALSE)
 
-cols_temp = c("dia", "sensor", "lote", "temp_d", "temp_f_acima", "temp_f_abaixo", "n_medidas")
-cols_umid = c("dia", "sensor", "lote", "umid_d", "umid_f_acima", "umid_f_abaixo", "n_medidas")
+cols = c("dia", "sensor", "lote", "temp_d", "temp_f", "umid_d", "umid_f")
+write_csv(scores[, cols], file.path(dir_saida, "scores_faixa_lote1.csv"))
 
-write_csv(scores[, cols_temp], file.path(dir_saida, "monitorando_faixa_temp_lote1.csv"))
-write_csv(scores[, cols_umid], file.path(dir_saida, "monitorando_faixa_umd_lote1.csv"))
-
-message("✓ Exportado: ", dir_saida)
+message("✓ Exportado: ", file.path(dir_saida, "scores_faixa_lote1.csv"))
